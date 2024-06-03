@@ -36,7 +36,7 @@ class SingleMovieDetails extends Component {
     const {params} = match
     const {id} = params
     const getMovieApi = `https://api.themoviedb.org/3/movie/${id}?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US`
-    const getCastApi = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b24ca4a28f7cce57aca325b6f144c729s&language=en-US`
+    const getCastApi = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US`
     const MovieResponseObj = await fetch(getMovieApi)
     const castResponseObj = await fetch(getCastApi)
     if (MovieResponseObj.ok && castResponseObj.ok) {
@@ -71,7 +71,7 @@ class SingleMovieDetails extends Component {
             <div className="container-movie-details">
               <div className="movie-details-container">
                 <img
-                  src={`http://image.tmdb.org/t/p/original/${posterPath}`}
+                  src={`https://image.tmdb.org/t/p/w500${posterPath}`}
                   alt={OriginalTitle}
                   className="movie-poster-in-details"
                 />

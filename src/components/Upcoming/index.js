@@ -47,7 +47,7 @@ class Upcoming extends Component {
 
   getPopularMovies = async () => {
     const {currentPage} = this.state
-    const PopularApi = `https://api.themoviedb.org/3/movie/upcoming?api_key=3bc3168ec6c38084807eb13705f78318&language=en-US&page=${currentPage}`
+    const PopularApi = `https://api.themoviedb.org/3/movie/upcoming?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US&page=${currentPage}`
     const response = await fetch(PopularApi)
     if (response.ok === true) {
       const dataObj = await response.json()
