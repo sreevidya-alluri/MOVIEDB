@@ -56,8 +56,14 @@ class SingleMovieDetails extends Component {
 
   render() {
     const {movieObj, castList, loading} = this.state
-    const {posterPath, OriginalTitle, voteAverage, overview, runtime, genre} =
-      movieObj
+    const {
+      posterPath,
+      OriginalTitle,
+      voteAverage,
+      overview,
+      runtime,
+      genre,
+    } = movieObj
 
     const rating = Math.round(voteAverage)
     return (

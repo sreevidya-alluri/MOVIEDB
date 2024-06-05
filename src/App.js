@@ -10,7 +10,7 @@ import Upcoming from './components/Upcoming'
 import Footer from './components/Footer'
 import Context from './context/Context'
 import SingleMovieDetails from './components/SingleMovieDetails'
-import SearchMoviesDetails from './components/SearchMovieDetails'
+import SearchMovieDetails from './components/SearchMovieDetails'
 
 // write your code here
 class App extends Component {
@@ -82,7 +82,7 @@ class App extends Component {
             <Route exact path="/top-rated" component={TopRated} />
             <Route exact path="/upcoming" component={Upcoming} />
             <Route exact path="/movie/:id" component={SingleMovieDetails} />
-            <Route exact path="/search" component={SearchMoviesDetails} />
+            <Route exact path="/search" component={SearchMovieDetails} />
           </Switch>
           <Footer />
         </main>
