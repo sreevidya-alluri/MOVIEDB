@@ -14,7 +14,7 @@ const MovieCard = props => {
         className="poster-size"
       />
       <p>{title}</p>
-      <p>rating: {rating}</p>
+      <p>rating: {voteAverage}</p>
       <Link to={`/movie/${id}`}>
         <button className="view-details" type="button">
           View Details

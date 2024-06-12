@@ -7,7 +7,7 @@ import MovieCard from '../MovieCard'
 import './index.css'
 
 class Upcoming extends Component {
-  state = {loading: true, MovieList: [], currentPage: 1}
+  state = {loading: true, results: [], currentPage: 1}
 
   componentDidMount() {
     this.getPopularMovies()
@@ -21,30 +21,6 @@ class Upcoming extends Component {
       voteAverage: item.vote_average,
     }))
 
-  turnPage = () => {
-    this.setState(
-      prevState => ({
-        currentPage: prevState.currentPage + 1,
-        loading: !prevState.loading,
-      }),
-      this.getPopularMovies,
-    )
-  }
-
-  prevPage = () => {
-    const {currentPage} = this.state
-
-    if (currentPage > 1) {
-      this.setState(
-        prevState => ({
-          currentPage: prevState.currentPage - 1,
-          loading: !prevState.loading,
-        }),
-        this.getPopularMovies,
-      )
-    }
-  }
-
   getPopularMovies = async () => {
     const {currentPage} = this.state
     const PopularApi = `https://api.themoviedb.org/3/movie/upcoming?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US&page=${currentPage}`
@@ -53,7 +29,7 @@ class Upcoming extends Component {
       const dataObj = await response.json()
       const modifiedMovieList = this.caseConvert(dataObj.results)
       this.setState(prevState => ({
-        MovieList: modifiedMovieList,
+        results: modifiedMovieList,
         loading: !prevState.loading,
       }))
     }
@@ -84,7 +60,7 @@ class Upcoming extends Component {
   }
 
   render() {
-    const {MovieList, loading, currentPage} = this.state
+    const {results, loading, currentPage} = this.state
     // console.log(MovieList);
     return (
       <>
@@ -95,7 +71,7 @@ class Upcoming extends Component {
         ) : (
           <section className="section-container">
             <div className="popular-container ">
-              <p className="route-heading">UpComing Movies</p>
+              <p className="route-heading">Upcoming Movies</p>
               <div className="pagination">
                 <button
                   onClick={this.prevPage}
@@ -114,7 +90,7 @@ class Upcoming extends Component {
                 </button>
               </div>
               <ul className="movie-list-container">
-                {MovieList.map(item => (
+                {results.map(item => (
                   <MovieCard key={item.id} details={item} />
                 ))}
               </ul>

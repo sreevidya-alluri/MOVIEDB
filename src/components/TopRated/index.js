@@ -7,7 +7,7 @@ import MovieCard from '../MovieCard'
 import './index.css'
 
 class TopRated extends Component {
-  state = {loading: true, MovieList: [], currentPage: 1}
+  state = {loading: true, results: [], currentPage: 1}
 
   componentDidMount() {
     this.getPopularMovies()
@@ -29,7 +29,7 @@ class TopRated extends Component {
       const dataObj = await response.json()
       const modifiedMovieList = this.caseConvert(dataObj.results)
       this.setState(prevState => ({
-        MovieList: modifiedMovieList,
+        results: modifiedMovieList,
         loading: !prevState.loading,
       }))
     }
@@ -60,7 +60,7 @@ class TopRated extends Component {
   }
 
   render() {
-    const {MovieList, loading, currentPage} = this.state
+    const {results, loading, currentPage} = this.state
     // console.log(MovieList);
     return (
       <>
@@ -71,7 +71,7 @@ class TopRated extends Component {
         ) : (
           <section className="section-container">
             <div className="popular-container ">
-              <p className="route-heading">Top-Rated Movies</p>
+              <h1 className="route-heading">Top Rated</h1>
               <div className="pagination">
                 <button
                   onClick={this.prevPage}
@@ -90,7 +90,7 @@ class TopRated extends Component {
                 </button>
               </div>
               <ul className="movie-list-container">
-                {MovieList.map(item => (
+                {results.map(item => (
                   <MovieCard key={item.id} details={item} />
                 ))}
               </ul>

@@ -79,6 +79,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Popular} />
+
             <Route exact path="/top-rated" component={TopRated} />
             <Route exact path="/upcoming" component={Upcoming} />
             <Route exact path="/movie/:id" component={SingleMovieDetails} />

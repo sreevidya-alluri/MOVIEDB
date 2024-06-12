@@ -1,11 +1,13 @@
 import Loader from 'react-loader-spinner'
+
 import {Component} from 'react'
+
 import MovieCard from '../MovieCard'
 
 import './index.css'
 
 class Popular extends Component {
-  state = {loading: true, MovieList: [], currentPage: 1}
+  state = {loading: true, results: [], currentPage: 1}
 
   componentDidMount() {
     this.getPopularMovies()
@@ -18,6 +20,20 @@ class Popular extends Component {
       title: item.title,
       voteAverage: item.vote_average,
     }))
+
+  getPopularMovies = async () => {
+    const {currentPage} = this.state
+    const PopularApi = `https://api.themoviedb.org/3/movie/popular?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US&page=${currentPage}`
+    const response = await fetch(PopularApi)
+    if (response.ok === true) {
+      const dataObj = await response.json()
+      const modifiedMovieList = this.caseConvert(dataObj.results)
+      this.setState(prevState => ({
+        results: modifiedMovieList,
+        loading: !prevState.loading,
+      }))
+    }
+  }
 
   turnPage = () => {
     this.setState(
@@ -43,27 +59,14 @@ class Popular extends Component {
     }
   }
 
-  getPopularMovies = async () => {
-    const {currentPage} = this.state
-    const PopularApi = `https://api.themoviedb.org/3/movie/popular?api_key=b24ca4a28f7cce57aca325b6f144c729&language=en-US&page=${currentPage}`
-    const response = await fetch(PopularApi)
-    if (response.ok === true) {
-      const dataObj = await response.json()
-      const modifiedMovieList = this.caseConvert(dataObj.results)
-      this.setState(prevState => ({
-        MovieList: modifiedMovieList,
-        loading: !prevState.loading,
-      }))
-    }
-  }
-
   render() {
-    const {MovieList, loading, currentPage} = this.state
+    const {results, loading, currentPage} = this.state
+    // console.log(MovieList);
     return (
       <>
         {loading ? (
           <section className="loader-container">
-            <Loader type="Oval" color="blue" className="loader-style" />
+            <Loader type="Oval" color="green" className="loader-style" />
           </section>
         ) : (
           <section className="section-container">
@@ -86,8 +89,9 @@ class Popular extends Component {
                   next
                 </button>
               </div>
+
               <ul className="movie-list-container">
-                {MovieList.map(item => (
+                {results.map(item => (
                   <MovieCard key={item.id} details={item} />
                 ))}
               </ul>

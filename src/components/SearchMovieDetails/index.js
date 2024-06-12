@@ -1,7 +1,7 @@
 import Loader from 'react-loader-spinner'
 
 import {Component} from 'react'
-import {BsArrowRightSquareFill} from 'react-icons/bs'
+
 import MovieCard from '../MovieCard'
 
 import Context from '../../context/Context'
@@ -23,6 +23,20 @@ class SearchMovieDetails extends Component {
                 <section className="section-container">
                   <div className="popular-container ">
                     <p className="route-heading">Your Search Movies</p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-arrow-right"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1l-5.35 5.35a.5.5 0 0 1-.707-.707L14.146 8.146a.5.5 0 0 1 0-.707z"
+                      />
+                    </svg>
+
                     <p className="page-numbers">
                       {currentPage}
                       <button
@@ -30,7 +44,7 @@ class SearchMovieDetails extends Component {
                         className="next-page"
                         type="button"
                       >
-                        <BsArrowRightSquareFill />
+                        Search
                       </button>
                     </p>
                     <ul className="movie-list-container">
