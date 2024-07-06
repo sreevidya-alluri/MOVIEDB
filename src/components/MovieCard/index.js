@@ -9,7 +9,7 @@ const MovieCard = props => {
   return (
     <li className="movie">
       <img
-        src={`http://image.tmdb.org/t/p/original/${posterPath}`}
+        src={`https://image.tmdb.org/t/p/w500${posterPath}`}
         alt={title}
         className="poster-size"
       />
