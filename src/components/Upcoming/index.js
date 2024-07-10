@@ -86,7 +86,7 @@ class Upcoming extends Component {
                   className="next-page"
                   type="button"
                 >
-                  next
+                  Next
                 </button>
               </div>
               <ul className="movie-list-container">

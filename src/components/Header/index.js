@@ -55,7 +55,7 @@ class Header extends Component {
                   </Link>
                   <Link to="/top-rated">
                     <button className="nav-button" type="button">
-                      Top-Rated
+                      Top Rated
                     </button>
                   </Link>
                   <Link to="/upcoming">

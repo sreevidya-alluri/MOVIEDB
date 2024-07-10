@@ -86,7 +86,7 @@ class Popular extends Component {
                   className="next-page"
                   type="button"
                 >
-                  next
+                  Next
                 </button>
               </div>
 
